@@ -1,12 +1,23 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
+interface ContainerProps {
+  isFocused: boolean;
+  isFilled: boolean;
+}
+
+const Container = styled.div<ContainerProps>`
   background: #232129;
   border-radius: 10px;
-  border: 2px solid #232129;
   padding: 16px;
   width: 100%;
-  color: #666360;
+
+  border: 2px solid;
+  border-color: ${props => {
+    return props.isFocused ? '#ff9000' : '#232129';
+  }};
+  color: ${props => {
+    return props.isFocused || props.isFilled ? '#ff9000' : '#666360';
+  }};
 
   display: flex;
   align-items: center;
